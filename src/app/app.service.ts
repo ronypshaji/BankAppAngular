@@ -6,6 +6,18 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppService {
 
+  userRegisterDetails:any = {
+    
+      username:'',
+      password:'',
+      fname:'',
+      lname:'',
+      address:'',
+      email:'',
+      phone:'',
+    
+  };
+
   constructor(private http: HttpClient) {}
 
   url = `http://httpbin.org/post`;
@@ -30,6 +42,27 @@ export class AppService {
        })
   }
 }
+
+
+registerUserData()
+{
+  debugger;
+  {
+    console.log(this.userRegisterDetails);
+      this.http.post<any>(this.url, JSON. stringify(this.userRegisterDetails)).subscribe({
+           next: data => {
+             console.log(data);
+             console.log(JSON.parse(data.data));
+          },
+          error: error => {
+              //this.errorMessage = error.message;
+            console.error('There was an error!', error);
+        }
+     })
+}
+}
+
+
 
   //  registerUser()
   //  {
