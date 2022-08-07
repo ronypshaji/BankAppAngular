@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppService {
 
+  returnData:any={};
   userRegisterDetails:any = {
     
       username:'',
@@ -13,54 +14,65 @@ export class AppService {
       fname:'',
       lname:'',
       address:'',
+      sinNumber:'',
       email:'',
       phone:'',
     
   };
 
+  userLoginDetails:any = {
+    
+    username:'',
+    password:'',
+  
+};
+showLogOut:any = false;
+showName:any =""
+
   constructor(private http: HttpClient) {}
 
-  url = `http://httpbin.org/post`;
+  url = `http://localhost:8080/`;
   postData = {
     test: 'my content',
   };
 
 
-  samplePostData()
-  {
-    debugger;
-    {
-        this.http.post<any>(this.url, this.postData).subscribe({
-             next: data => {
-               console.log(data);
-               console.log(JSON.parse(data.data));
-            },
-            error: error => {
-                //this.errorMessage = error.message;
-              console.error('There was an error!', error);
-          }
-       })
-  }
-}
+//   samplePostData()
+//   {
+//     debugger;
+//     {
+//         this.http.post<any>(this.url, this.postData).subscribe({
+//              next: data => {
+//                console.log(data);
+//                console.log(JSON.parse(data.data));
+//             },
+//             error: error => {
+//                 //this.errorMessage = error.message;
+//               console.error('There was an error!', error);
+//           }
+//        })
+//   }
+// }
 
 
-registerUserData()
-{
-  debugger;
-  {
-    console.log(this.userRegisterDetails);
-      this.http.post<any>(this.url, JSON. stringify(this.userRegisterDetails)).subscribe({
-           next: data => {
-             console.log(data);
-             console.log(JSON.parse(data.data));
-          },
-          error: error => {
-              //this.errorMessage = error.message;
-            console.error('There was an error!', error);
-        }
-     })
-}
-}
+// registerUserData()
+// {
+//   debugger;
+//   {
+//     console.log(this.userRegisterDetails);
+//       this.http.post<any>(this.url+'register',(this.userRegisterDetails)).subscribe({
+//            next: data => {
+//              //console.log(data);
+//              return data;
+//              //console.log(JSON.parse(data.data));
+//           },  
+//           error: error => {
+//               //this.errorMessage = error.message;
+//             console.error('There was an error!', error);
+//         }
+//      })
+// }
+// }
 
 
 

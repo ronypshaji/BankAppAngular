@@ -30,6 +30,10 @@
                 <input type="text" formControlName="email" class="form-control"/>
             </div>
             <div class="form-group">
+                <label for="lastName">SIN Number</label>
+                <input type="text" formControlName="sinNumber" class="form-control"/>
+            </div>
+            <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" formControlName="username" class="form-control"/>
             </div>
@@ -38,10 +42,20 @@
                 <input type="password" formControlName="password" class="form-control"/>
             </div>
             <div class="form-group">
+                
+                <input type="checkbox" formControlName="isAdmin" value="false" [(ngModel)]="isChecked"/>
+
+                <label for="isAdmin">isAdmin</label>
+            </div>
+            <br>
+            <div class="form-group">
                 <button class="btn btn-primary">
                     Register
                 </button>
-                <a routerLink="" class="btn btn-link">Cancel</a>
+
+                <span *ngIf="showError" style="color: red;">User Already Exist</span>
+                <span *ngIf="showError1" style="color: red;">All Fields are mandatory</span>
+                <a routerLink="/adminHome" class="btn btn-link">Cancel</a>
             </div>
         </form>
     </div>

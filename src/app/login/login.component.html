@@ -16,7 +16,8 @@
                 <button class="btn btn-primary">
                     Login
                 </button>
-                <a routerLink="./Register" class="btn btn-link">Register</a>
+                <span *ngIf="showError" style="color: red;"> Incorrect Username or Password</span>
+                <!-- <a routerLink="./Register" class="btn btn-link">Register</a> -->
                
             </div>
         </form>
