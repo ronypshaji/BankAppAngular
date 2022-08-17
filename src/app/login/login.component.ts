@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
                 localStorage.setItem('userName',this.appService.userLoginDetails.username);
                 if(data.isAdmin=='true')
                 {
+                  localStorage.setItem('isAdmin',data.isAdmin);
                   this.appService.showName =localStorage.getItem('userName');
                   this.appService.showLogOut =true;
                   // navigate to admin dashboard
@@ -55,6 +56,7 @@ export class LoginComponent implements OnInit {
                 else
                 {
                   //navigate to user dashboard
+                  localStorage.setItem('isAdmin',data.isAdmin);
                   this.appService.showName =localStorage.getItem('userName');
                   this.appService.showLogOut =true;
                   this.router.navigate(['/userHome'])

@@ -91,8 +91,8 @@ showName:any =""
 
    sampleGetData()
    {
-    let url = 'https://jsonplaceholder.typicode.com/todos/';
-    return this.http.get(url);
+    //let url = 'https://jsonplaceholder.typicode.com/todos/';
+    return this.http.get(this.url+'getAllUserAcc');
    }
     
 }

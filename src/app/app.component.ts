@@ -29,4 +29,22 @@ export class AppComponent implements OnInit{
 
   }
 
+  homeClicked()
+  {
+    debugger;
+    if(localStorage.getItem('isAdmin') == 'true')
+    {
+      this.router.navigate(['adminHome']);
+    }
+    else
+    if(localStorage.getItem('isAdmin') == 'false')
+    {
+      this.router.navigate(['userHome']);
+    }
+    else
+    {
+      this.router.navigate(['']);
+    }
+  }
+
 }
