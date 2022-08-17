@@ -1,0 +1,40 @@
+<div>
+	<br>
+
+<h1 style = "text-align:center" >Add Account</h1>
+	
+	<div class="container1">
+	<div Class = "center">
+	
+		<p>Add the account type: </p>
+
+		<form action="Form1">
+			<label for="users">Select the user:</label>
+			<select name="users" id="users" [(ngModel)]="selectedUser" (change)="dopDownSelected()">
+			<option *ngFor="let name of userDropDown" [value]="name">{{name}}</option>
+			 </select>
+			 
+			 <br><br>
+			  <p>Select the accunt type</p>
+					  <input type="checkbox" [(ngModel)]="initialValue1" [disabled]="iscurrentaccount" (change)="iscurrentChecked($event)" id="currentaccount" name="currentaccount">
+					  <label for="currentaccount"> Current Account</label><br>
+					  <input type="checkbox" [(ngModel)]="initialValue2" [disabled]="ischequing_account" (change)="ischequingChecked($event)"  id="chequing_account" name="chequing_account">
+					  <label for="chequing_account"> Chequing Account</label><br>
+					  <input type="checkbox" [(ngModel)]="initialValue3" [disabled]="issaving_account" (change)="issavingsChecked($event)" id="saving_account" name="saving_account">
+					  <label for="saving_account"> Saving Account</label><br><br>
+					  
+					  
+					  
+					  <input type="submit" class= "submit" value="Submit" (click)="submitClicked()">
+					  <br>
+					  <input type="submit" class= "submit" value="Cancel" (click)="cancelClicked()"><br>
+					  <span *ngIf="success" style="color: green;"> Account Added</span><br>
+					  <span *ngIf="error" style="color: red;"> Inavlid Input</span><br>
+					  
+		  
+		</form>
+		
+	</div>
+	</div>
+	</div>
+
