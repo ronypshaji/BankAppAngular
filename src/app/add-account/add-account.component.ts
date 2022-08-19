@@ -64,19 +64,38 @@ export class AddAccountComponent implements OnInit {
   });
   }
 
-  submitClicked()
+  async submitClicked()
   {
    
-    if(this.selectedUser == undefined || this.accountTypeArr.length == 0)
+    debugger;
+    if(this.selectedUser == undefined)
     {
       this.error = true;
     }
     else
     {
-      for(let i=0;i<this.accountTypeArr.length;i++)
+      if(this.initialValue1)
+      {this.accountTypeArr.push("current")}
+      if(this.initialValue2)
+      {this.accountTypeArr.push("chequing")}
+      if(this.initialValue3)
+      {this.accountTypeArr.push("savings")}
+
+      if (this.accountTypeArr.length == 0)
       {
-        this.createAccount(this.accountTypeArr[i]);
+        this.error = true;
       }
+      else
+      {
+        this.accountTypeArr = [...new Set(this.accountTypeArr)];
+        for(let i=0;i<this.accountTypeArr.length;i++)
+        {
+          await this.createAccount(this.accountTypeArr[i]);
+        }
+      }
+
+
+      
     }
 
   }
@@ -88,17 +107,17 @@ export class AddAccountComponent implements OnInit {
 
   iscurrentChecked(e:any)
   {
-    this.accountTypeArr.push("current")
+    
   }
 
   ischequingChecked(e:any)
   {
-    this.accountTypeArr.push("chequing")
+    
   }
 
   issavingsChecked(e:any)
   {
-    this.accountTypeArr.push("savings")
+    
   }
 
   createAccount(accountType :any)

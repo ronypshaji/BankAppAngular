@@ -12,6 +12,7 @@ export class UserDetailsComponent implements OnInit {
   constructor(private http: HttpClient, public appService : AppService) { }
 
   userObj:any={};
+  userObjNames:any={};
   accountTypesandBalance:any = [];
 
   ngOnInit(): void {
@@ -26,6 +27,10 @@ export class UserDetailsComponent implements OnInit {
     await this.appService.getUserData().subscribe(data=>{
     this.userObj = data;
     this.setUserValues();
+    this.appService.getUserDetailswithUserName().subscribe(data1=>{
+      debugger;
+      this.userObjNames = data1;
+    });
   });
   }
 
