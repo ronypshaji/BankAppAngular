@@ -16,12 +16,16 @@ export class UserHomeComponent implements OnInit {
   container2:boolean=false;
   container3:boolean=false;
   container4:boolean= false;
+  container5:boolean= false;
   showerr:boolean = false;
   userObj:any={};
   accountTypeDropDown:any=[];
   depositAmount=0;
   withdrawAmount=0;
+  transferAmount = 0;
+  transferAccountNo =0;
   dropdown:any;
+  toDropdown:any
   accountTypesandBalance:any = [];
 
 
@@ -145,8 +149,31 @@ export class UserHomeComponent implements OnInit {
     }
   }
 
+  transferSubmit()
+  {
+    this.transferMoneyMethod(this.transferAmount,this.transferAccountNo)
 
+  }
 
+  payBillSubmit()
+  {
+    this.transferMoneyMethod(this.transferAmount,this.transferAccountNo)
+  }
+
+  moveMoneySubmit()
+  {
+    debugger;
+    if(this.toDropdown != this.dropdown)
+     {
+      this.transferMoneyMethod(this.transferAmount,this.toDropdown)
+     }
+     else
+     {
+      alert("Can't move to same account");
+     }
+  }
+
+ 
 
   depositClicked()
   {
@@ -172,17 +199,66 @@ export class UserHomeComponent implements OnInit {
     this.container4 = true
   }
 
+  moveMoneyClicked()
+  {
+    this.mainContainer = false;
+    this.container5 = true
+  }
+
   resetFlags()
   {
 
     this.mainContainer = true;
     this.dropdown=undefined;
+    this.toDropdown = undefined;
     this.container1=false;
     this.container2=false;
     this.container3=false;
     this.container4= false;
+    this.container5= false;
+    this.transferAmount = 0;
+    this.transferAccountNo =0;
     this.getDetailsWithUser();
 
   }
+
+  transferMoneyMethod(amount : any, toAccNo : any)
+  {  
+    debugger;
+    if(amount > 0 && this.dropdown != undefined && toAccNo > 0)
+    {
+      var tempObj = {
+        fromAcc : this.dropdown,
+        toAcc: toAccNo,
+        amount: amount
+    }
+    this.http.post<any>(this.appService.url+'transferMoney',(tempObj)).subscribe({
+      next: data => {
+        debugger;
+        if(data.message == "Money Transfer Successfull")
+        {
+        alert("Money Transfer Successfull")
+        this.resetFlags()
+        this.getDetailsWithUser();
+        }
+        else
+        {
+          alert(data.message);
+        }
+      },
+        error: error => {
+              debugger;
+                 //this.errorMessage = error.message;
+                 alert(error.error.text)
+                 console.error('There was an error!', error);
+      }
+    })
+    }
+    else
+    {
+      alert("invalid input");
+    }
+  }
+
 
 }

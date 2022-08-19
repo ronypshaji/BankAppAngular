@@ -60,7 +60,7 @@ export class AddAccountComponent implements OnInit {
       debugger;
       this.userDataObj = data;
       this.userDropDown= Object.keys(data);
-      this.userDropDown.splice(this.userDropDown.indexOf('admin'),1);
+      //this.userDropDown.splice(this.userDropDown.indexOf('admin'),1);
   });
   }
 

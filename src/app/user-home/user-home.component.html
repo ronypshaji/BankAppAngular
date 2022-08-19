@@ -1,7 +1,5 @@
 <div>
     <h1 style = "text-align:center" >User Home Page</h1>
-
-	
 	<div class="container2" *ngIf="mainContainer">
 		<div Class = "center">
 				<div class= "button1">	
@@ -19,6 +17,10 @@
 				<div class = "button4">
 					<a href="..\New folder\Utility_bills.html" class="anchor"></a>
 					<button class="button button2"(click)="payBillsClicked()">Pay Utility Bills</button>
+				</div>
+				<div class = "button4">
+					<a href="..\New folder\Utility_bills.html" class="anchor"></a>
+					<button class="button button2"(click)="moveMoneyClicked()">Move Money</button>
 				</div>
 		</div>
 	</div>
@@ -83,27 +85,21 @@
 		<form action="Form1">
 		
 			<label for="users1">From:</label>
-			<select name="users1" id="users1">
+			<select name="users1" id="users1" [(ngModel)]="dropdown">
 				<option *ngFor="let name of accountTypeDropDown" [value]="name.number">{{name.type}}</option>
 			</select>
 			<br>
 			<br>
-			<label for="users2">To:</label>
-			<select name="users2" id="users2">
-			<option value="p">Jessin Eldho</option>
-			<option value="q">Rony Shaji</option>
-			<option value="r">Jomi Jacob</option>
-			</select>
+			<label for="users2">To Account No:</label>
+			<input type="number" id="TransferAccount" name="TransferAccount" [(ngModel)]="transferAccountNo"><br>
+			<br>
 			
-			
-			
-			 <br>
-			 <br>
+			 
 			 <label for="AmountTransfer">Enter the Amount to Transfer:</label>
-            <input type="text" id="Amount" name="Amount" ><br>
+            <input type="text" id="Amount" name="Amount" [(ngModel)]="transferAmount"><br>
 			 <br>
 			 
-			 <input type="submit" class= "submit" value="Submit">
+			 <input type="submit" class= "submit" value="Submit"(click)="transferSubmit()">
 			 </form>
 			 
 			 <span style="color:blue;" (click)="resetFlags()"><a>Return to User Home</a></span>
@@ -118,29 +114,58 @@
 				<form action="Form1">
 				
 					<label for="users1">From:</label>
-					<select name="users1" id="users1">
+					<select name="users1" id="users1" [(ngModel)]="dropdown">
 						<option *ngFor="let name of accountTypeDropDown" [value]="name.number">{{name.type}}</option>
 					</select>
 					<br>
 					<br>
 					<label for="users2">Pay To:</label>
-					<select name="users2" id="users2">
-					<option value="p">Jessin Eldho</option>
-					<option value="q">Rony Shaji</option>
-					<option value="r">Jomi Jacob</option>
-					</select>
-					
-					
+					<select name="users2" id="users2" [(ngModel)]="transferAccountNo">
+					<option value="10000">ElectricityBill</option>
+					<option value="10001">Hydro</option>
+					<option value="10002">Internet</option>
+					</select>		
 					
 					 <br>
 					 <br>
 					 <label for="AmountTransfer">Enter the Amount to Transfer:</label>
-					<input type="text" id="Amount" name="Amount" ><br>
+					<input type="number" id="Amount" name="Amount" [(ngModel)]="transferAmount" ><br>
 					 <br>
 					 
-					 <input type="submit" class= "submit" value="Submit">
+					 <input type="submit" class= "submit" value="Submit" (click)="payBillSubmit()">
 					 </form>
-					 <span (click)="resetFlags()"><a>Return to User Home</a></span>
+					 <span style="color:blue;" (click)="resetFlags()"><a>Return to User Home</a></span>
+					 </div>	
+		
+	</div>
+
+	<div class="container2" *ngIf="container5">
+		<div Class = "center">
+	
+				<p>Move Money</p>
+		
+				<form action="Form1">
+				
+					<label for="users1">From:</label>
+					<select name="users1" id="users1" [(ngModel)]="dropdown">
+						<option *ngFor="let name of accountTypeDropDown" [value]="name.number">{{name.type}}</option>
+					</select>
+					<br>
+					<br>
+					<label for="users2">To:</label>
+					<select name="users1" id="users1" [(ngModel)]="toDropdown">
+						<option *ngFor="let name of accountTypeDropDown" [value]="name.number">{{name.type}}</option>
+					</select>	
+					
+					 <br>
+					 <br>
+					 <label for="AmountTransfer">Enter the Amount to Transfer:</label>
+					<input type="number" id="Amount" name="Amount" [(ngModel)]="transferAmount" ><br>
+					 <br>
+					 
+					 <input type="submit" class= "submit" value="Submit" (click)="moveMoneySubmit()">
+					 </form>
+					 <span style="color:blue;" (click)="resetFlags()"><a>Return to User Home</a></span>
 					 </div>	
 		
 	</div>
