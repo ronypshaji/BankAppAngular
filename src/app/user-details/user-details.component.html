@@ -42,4 +42,34 @@
       
     </tbody>
 </table>
+
+ <!-- Transaction Table -->
+<br>
+<table>
+
+    <thead>
+        <th>Date</th>
+        <th>Status</th>
+        <th>From Account</th>
+        <th>To Account</th>
+        <th>Amount</th>
+        <th>Transaction Id</th>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let item of userTransactions">
+            <td>{{item.date}}</td>
+            <td>{{item.status}}</td>
+            <td>{{item.fromAccount}}</td>
+            <td>{{item.toAccount}}</td>
+            <td>{{item.amount}}</td>
+            <td>{{item.transactionId}}</td>
+        </tr>
+      
+    </tbody>
+
+</table>
+
+
+
 </div>

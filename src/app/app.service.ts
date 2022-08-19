@@ -112,5 +112,13 @@ userAccountDetails:any = [];
     //this.http.get(this.appService.url+'getAccountsForUser',{params:queryParams});
     return this.http.get(this.url+'getUserDetails',{params:queryParams});
    }
+
+   getUserTransactionswithUserName()
+   {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("username",this.showName);
+    //this.http.get(this.appService.url+'getAccountsForUser',{params:queryParams});
+    return this.http.get(this.url+'getTransactionForUser',{params:queryParams});
+   }
     
 }

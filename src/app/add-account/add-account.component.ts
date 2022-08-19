@@ -120,12 +120,12 @@ export class AddAccountComponent implements OnInit {
     
   }
 
-  createAccount(accountType :any)
+  async createAccount(accountType :any)
   {
     this.submitObj.username = this.selectedUser;
     this.submitObj.accountBalance = '0';
     this.submitObj.accountType = accountType;
-    this.http.post<any>(this.appService.url+'createAcc',(this.submitObj)).subscribe({
+    await this.http.post<any>(this.appService.url+'createAcc',(this.submitObj)).subscribe({
       next: data => {
         if(data.AccountCreated == 1)
         {

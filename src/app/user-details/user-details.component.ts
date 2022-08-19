@@ -13,11 +13,13 @@ export class UserDetailsComponent implements OnInit {
 
   userObj:any={};
   userObjNames:any={};
+  userTransactions:any={};
   accountTypesandBalance:any = [];
 
   ngOnInit(): void {
     debugger;
     this.getDetailsWithUser();
+    this.getUserTransactions();
   }
 
   async getDetailsWithUser()
@@ -52,6 +54,16 @@ export class UserDetailsComponent implements OnInit {
     }
     this.accountTypesandBalance //account details in this array
     //set values for user here
+  }
+
+
+  getUserTransactions()
+  {
+    debugger;
+    this.appService.getUserTransactionswithUserName().subscribe(data1=>{
+      debugger;
+      this.userTransactions= data1;
+    });
   }
 
 }
