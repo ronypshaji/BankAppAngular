@@ -4,6 +4,7 @@ import { AddAccountComponent } from './add-account/add-account.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserHomeComponent } from './user-home/user-home.component';
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'userHome', component:UserHomeComponent},
   { path: 'adminHome', component:AdminHomeComponent},
   { path: 'addAccount', component:AddAccountComponent},
+  { path: 'userDetails', component:UserDetailsComponent},
 
 ];
 

@@ -1,0 +1,23 @@
+
+    <br>
+    <br>
+<div class="center">
+
+<table>
+    <thead>
+        <th>Account Number</th>
+        <th>Account Type</th>
+        <th>Balance</th>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let item of accountTypesandBalance">
+            <td>{{item.accountnumber}}</td>
+            <td>{{item.accounttype}}</td>
+            <td>{{item.balance}}</td>
+          
+        </tr>
+      
+    </tbody>
+</table>
+</div>

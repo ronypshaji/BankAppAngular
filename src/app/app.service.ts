@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +28,7 @@ export class AppService {
 };
 showLogOut:any = false;
 showName:any =""
+userAccountDetails:any = [];
 
   constructor(private http: HttpClient) {}
 
@@ -93,6 +94,15 @@ showName:any =""
    {
     //let url = 'https://jsonplaceholder.typicode.com/todos/';
     return this.http.get(this.url+'getAllUserAcc');
+   }
+
+   getUserData()
+   {
+    //let url = 'https://jsonplaceholder.typicode.com/todos/';
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("username",this.showName);
+    //this.http.get(this.appService.url+'getAccountsForUser',{params:queryParams});
+    return this.http.get(this.url+'getAccountsForUser',{params:queryParams});
    }
     
 }

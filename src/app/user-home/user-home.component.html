@@ -1,25 +1,147 @@
 <div>
     <h1 style = "text-align:center" >User Home Page</h1>
+
 	
-	
-	<div class="container2">
+	<div class="container2" *ngIf="mainContainer">
 		<div Class = "center">
 				<div class= "button1">	
 					<a href="..\New folder\deposit.html" class="anchor"></a>
-					<button class="button button1">Deposit</button>
+					<button class="button button1"(click)="depositClicked()">Deposit</button>
 				</div>
 				<div class = "button2">
 					<a href="..\New folder\withdraw.html" class="anchor"></a>
-					<button class="button button2">Withdrawal</button>
+					<button class="button button2"(click)="withdrawalClicked()">Withdrawal</button>
 				</div>
 				<div class = "button3">
 					<a href="..\New folder\Transfer_between_accounts.html" class="anchor"></a>
-					<button class="button button2">Transfer to Other Account</button>
+					<button class="button button2"(click)="transferClicked()">Transfer to Other Account</button>
 				</div>
 				<div class = "button4">
 					<a href="..\New folder\Utility_bills.html" class="anchor"></a>
-					<button class="button button2">Pay Utility Bills</button>
+					<button class="button button2"(click)="payBillsClicked()">Pay Utility Bills</button>
 				</div>
 		</div>
+	</div>
+
+	<div class="container2" *ngIf="container1">
+		
+			<div Class = "center">
+	
+				<p>Deposit cash: </p>
+		
+					<form action="Form1">
+					<label for="users">Select your Account to Deposit the cash:</label>
+					<select name="users" id="users" [(ngModel)]="dropdown">
+						<option *ngFor="let name of accountTypeDropDown" [value]="name.number">{{name.type}}</option>
+
+					 </select>
+					 <br>
+					 <br>
+					 <label for="AmountDeposit">Enter the Amount to Deposit:</label>
+					<input type="number" id="Amount" name="Amount" [(ngModel)]="depositAmount"><br>
+					 <br>
+					 
+					 <input type="submit" class= "submit" value="Submit" (click)="depositSubmit()">
+					 </form><br>
+					 <span style="color:blue;" (click)="resetFlags()"><a>Return to User Home</a></span>
+					 </div>
+
+			
+			
+		
+		
+	</div>
+
+	<div class="container2" *ngIf="container2">
+		<div Class = "center">
+			
+			
+		<p>Withdraw cash: </p>
+
+		
+			<label for="users">Select your Account to Withdraw the cash from:</label>
+			<select name="users" id="users1" [(ngModel)]="dropdown">
+				<option *ngFor="let name of accountTypeDropDown" [value]="name.number">{{name.type}}</option>
+			 </select>
+			 <br>
+			 <br>
+			 <label for="AmountWithdraw">Enter the Amount: </label>
+            <input type="number" id="Amount" name="Amount"  [(ngModel)]="withdrawAmount"><br>
+			 <br>
+			 
+			 <input type="submit" class= "submit" value="Submit" (click)="withdrawSubmit()">
+			 
+			
+			 <span style="color:blue;" (click)="resetFlags()"><a>Return to User Home</a></span>
+		</div>
+	</div>
+
+	<div class="container2" *ngIf="container3">
+		<div Class = "center">
+			<p>Transfer cash: </p>
+
+		<form action="Form1">
+		
+			<label for="users1">From:</label>
+			<select name="users1" id="users1">
+				<option *ngFor="let name of accountTypeDropDown" [value]="name.number">{{name.type}}</option>
+			</select>
+			<br>
+			<br>
+			<label for="users2">To:</label>
+			<select name="users2" id="users2">
+			<option value="p">Jessin Eldho</option>
+			<option value="q">Rony Shaji</option>
+			<option value="r">Jomi Jacob</option>
+			</select>
+			
+			
+			
+			 <br>
+			 <br>
+			 <label for="AmountTransfer">Enter the Amount to Transfer:</label>
+            <input type="text" id="Amount" name="Amount" ><br>
+			 <br>
+			 
+			 <input type="submit" class= "submit" value="Submit">
+			 </form>
+			 
+			 <span style="color:blue;" (click)="resetFlags()"><a>Return to User Home</a></span>
+			 </div>
+	</div>
+
+	<div class="container2" *ngIf="container4">
+		<div Class = "center">
+	
+				<p>Make a bill Payment: </p>
+		
+				<form action="Form1">
+				
+					<label for="users1">From:</label>
+					<select name="users1" id="users1">
+						<option *ngFor="let name of accountTypeDropDown" [value]="name.number">{{name.type}}</option>
+					</select>
+					<br>
+					<br>
+					<label for="users2">Pay To:</label>
+					<select name="users2" id="users2">
+					<option value="p">Jessin Eldho</option>
+					<option value="q">Rony Shaji</option>
+					<option value="r">Jomi Jacob</option>
+					</select>
+					
+					
+					
+					 <br>
+					 <br>
+					 <label for="AmountTransfer">Enter the Amount to Transfer:</label>
+					<input type="text" id="Amount" name="Amount" ><br>
+					 <br>
+					 
+					 <input type="submit" class= "submit" value="Submit">
+					 </form>
+					 <span (click)="resetFlags()"><a>Return to User Home</a></span>
+					 </div>	
+		
 	</div>
 </div>

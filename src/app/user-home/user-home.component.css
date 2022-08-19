@@ -11,6 +11,18 @@
     
   }
 
+  .submit{
+    background-color: #ed0722; /* red */
+   border: none;
+   color: white;
+  
+   text-align: center;
+   font-size: 16px;
+   margin: 4px 10px; /* Padding between buttons */
+   cursor: pointer; /* cursor pointer on the buttons*/
+   width: 90px;
+   border-radius: 12px;
+}
 
   .button1 {border-radius: 12px;}
   .button2 {border-radius: 12px;}

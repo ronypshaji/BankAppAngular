@@ -47,4 +47,9 @@ export class AppComponent implements OnInit{
     }
   }
 
+  userDetailsComp()
+  {
+    this.router.navigate(['userDetails'])
+  }
+
 }

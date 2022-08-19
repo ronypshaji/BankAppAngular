@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserHomeComponent } from './user-home/user-home.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AddAccountComponent } from './add-account/add-account.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { AddAccountComponent } from './add-account/add-account.component';
     RegisterComponent,
     UserHomeComponent,
     AdminHomeComponent,
-    AddAccountComponent
+    AddAccountComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
