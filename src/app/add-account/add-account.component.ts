@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { delay } from 'rxjs';
 import { AppService } from '../app.service';
 
 @Component({
@@ -90,7 +91,9 @@ export class AddAccountComponent implements OnInit {
         this.accountTypeArr = [...new Set(this.accountTypeArr)];
         for(let i=0;i<this.accountTypeArr.length;i++)
         {
-          await this.createAccount(this.accountTypeArr[i]);
+            this.sleep(100);
+             this.createAccount(this.accountTypeArr[i]);
+           //await setInterval()
         }
       }
 
@@ -99,6 +102,12 @@ export class AddAccountComponent implements OnInit {
     }
 
   }
+
+    sleep(delay:any) {
+    var start = new Date().getTime();
+    while (new Date().getTime() < start + delay);
+}
+
 
   cancelClicked()
   {
@@ -120,12 +129,12 @@ export class AddAccountComponent implements OnInit {
     
   }
 
-  async createAccount(accountType :any)
+  createAccount(accountType :any)
   {
     this.submitObj.username = this.selectedUser;
     this.submitObj.accountBalance = '0';
     this.submitObj.accountType = accountType;
-    await this.http.post<any>(this.appService.url+'createAcc',(this.submitObj)).subscribe({
+    this.http.post<any>(this.appService.url+'createAcc',(this.submitObj)).subscribe({
       next: data => {
         if(data.AccountCreated == 1)
         {
